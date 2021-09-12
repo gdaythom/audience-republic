@@ -1,18 +1,5 @@
 <template>
   <div>
-    <h1 class="font-medium">
-      Audience Republic
-    </h1>
-    <router-link to="/">
-      Home
-    </router-link>
-    <router-link to="/editor">
-      Editor
-    </router-link>
-    <router-link to="/events">
-      Events
-    </router-link>
-    {{ isLoading }}
     <!-- <pre>{{ events }}</pre> -->
     <router-view />
   </div>
@@ -35,4 +22,29 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+@font-face {
+  font-family: 'GraphikRegular';
+  font-display: swap;
+  src: local('Graphik Regular'),
+  url(/fonts/Graphik_Regular_Regular.otf) format('otf'),
+  url(/fonts/Graphik_Regular_Regular.ttf) format('ttf'),
+  url(/fonts/Graphik_Regular_Regular.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'GraphikMedium';
+  font-display: swap;
+  src: local('Graphik Medium'),
+  url(/fonts/Graphik_Medium_Regular.otf) format('otf'),
+  url(/fonts/Graphik_Medium_Regular.ttf) format('ttf'),
+  url(/fonts/Graphik_Medium_Regular.woff2) format('woff2');
+}
+
+body {
+  background-color: #F6F9FC;
+  font-family: 'GraphikRegular';
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+</style>

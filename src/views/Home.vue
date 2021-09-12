@@ -1,6 +1,18 @@
 <template>
   <div>
-    <h1>This is an home page</h1>
+    <h1 class="font-medium">
+      Audience Republic
+    </h1>
+    <router-link to="/">
+      Home
+    </router-link>
+    <router-link to="/editor">
+      Editor
+    </router-link>
+    <router-link to="/events">
+      Events
+    </router-link>
+    {{ isLoading }}
   </div>
 </template>
 
