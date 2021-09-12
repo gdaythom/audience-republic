@@ -16,7 +16,10 @@
               height="16"
             >
           </template>
-          <template v-slot:label>
+          <template v-slot:tablet>
+            Create
+          </template>
+          <template v-slot:desktop>
             Create new event
           </template>
         </ARButton>
@@ -56,6 +59,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/_variables.scss';
 .wrapper {
   margin: 0 auto;
   max-width: 1230px;
@@ -71,6 +75,8 @@ header {
   justify-content: space-between;
   align-self: flex-start;
   margin-top: 42px;
+  padding-left: 0px;
+  padding-right: 0px;
   padding-bottom: 33px;
   margin-bottom: 33px;
 }
@@ -78,10 +84,22 @@ nav {
  display: flex;
 }
 main {
+  box-sizing: border-box;
   display: grid;
-  grid-template-columns: repeat(3,1.2fr);
-  grid-column-gap: 44px;
-  grid-row-gap: 32px;
-  margin-bottom: 32px;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+  box-sizing: border-box;
+  justify-items: center;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  @media only screen and (min-width: $tablet) {
+    grid-template-columns: auto auto;
+  }
+  @media only screen and (min-width: $desktop) {
+    grid-template-columns: 380px auto 380px;
+  }
 }
 </style>

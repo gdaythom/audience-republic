@@ -23,6 +23,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/assets/_variables.scss';
+
 @font-face {
   font-family: 'GraphikRegular';
   font-display: swap;
@@ -46,5 +48,15 @@ body {
   font-weight: 400;
   margin: 0;
   padding: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  @media only screen and (min-width: $tablet) {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+  @media only screen and (min-width: $desktop) {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }
 </style>

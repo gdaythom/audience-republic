@@ -60,6 +60,7 @@ export default {
 
 <style lang="scss" scoped>
 .event {
+  box-sizing: border-box;
   position: relative;
   max-width: 380px;
 }
@@ -138,11 +139,14 @@ export default {
 .event__image {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
+  height: 205px;
+  overflow: hidden;
   position: relative;
   white-space: nowrap;
   img {
     display: block;
-    width: 100%;
+    height: 100%;
+    width: auto;
   }
 }
 .event__cta {

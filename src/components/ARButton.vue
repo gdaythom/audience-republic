@@ -1,8 +1,11 @@
 <template>
   <button>
     <slot name="icon" />
-    <span>
-      <slot name="label" />
+    <span class="onTablet">
+      <slot name="tablet" />
+    </span>
+    <span class="onDesktop">
+      <slot name="desktop" />
     </span>
   </button>
 </template>
@@ -14,6 +17,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/_variables.scss';
+
+.onTablet {
+  display: inline;
+  @media only screen and (min-width: $desktop) {
+    display: none;
+  }
+}
+.onDesktop {
+  display: none;
+  @media only screen and (min-width: $desktop) {
+    display: inline;
+  }
+}
+
 button {
   background-color: #7344C0;
   border: none;
@@ -28,15 +46,24 @@ button {
   height: 50px;
   text-align: center;
   transition: all .2s ease;
-  width: 190px;
+  width: 79px;
+  overflow: hidden;
+  white-space: nowrap;
+  @media only screen and (min-width: $tablet) {
+    width: 190px;
+  }
   &:hover {
     background-color: #592F9D;
     transition: all .2s ease;
   }
-  img, svg {
+  img {
+    display: none;
     margin-right: 8px;
+    @media only screen and (min-width: $desktop) {
+      display: inline-block;
+    }
   }
-  img, svg, span {
+  img, span {
     vertical-align: middle;
   }
 }
