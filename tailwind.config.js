@@ -5,7 +5,12 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        regular: ['"Graphik Regular"'],
+        medium: ['"Graphik Medium"'],
+      },
+    },
   },
   variants: {
     extend: {},
