@@ -129,7 +129,7 @@ export default {
   height: 30px;
   position: absolute;
   left: 30px;
-  top: 186px;
+  top: 191px;
   width: 30px;
   z-index: 2;
   svg {
