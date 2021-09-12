@@ -5,27 +5,27 @@ import Home from '../views/Home.vue';
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home,
-  },
-  {
-    path: '/editor',
-    name: 'Editor',
-    component: () => import(/* webpackChunkName: "editor" */ '../views/Editor.vue'),
-  },
-  {
-    path: '/events',
-    name: 'Events',
-    component: () => import(/* webpackChunkName: "events" */ '../views/Events.vue'),
-  },
+	{
+		path: '/',
+		name: 'Home',
+		component: Home,
+	},
+	{
+		path: '/editor',
+		name: 'Editor',
+		component: () => import(/* webpackChunkName: "editor" */ '../views/Editor.vue'),
+	},
+	{
+		path: '/events',
+		name: 'Events',
+		component: () => import(/* webpackChunkName: "events" */ '../views/Events.vue'),
+	},
 ];
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes,
+	mode: 'history',
+	base: process.env.BASE_URL,
+	routes,
 });
 
 export default router;
