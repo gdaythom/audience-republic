@@ -196,7 +196,7 @@ p {
   display: inline-block;
   font-size: 20px;
   line-height: 25px;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
