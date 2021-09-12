@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="font-medium">
+    <h1>
       Audience Republic
     </h1>
     <router-link to="/">
@@ -12,7 +12,6 @@
     <router-link to="/events">
       Events
     </router-link>
-    {{ isLoading }}
   </div>
 </template>
 
