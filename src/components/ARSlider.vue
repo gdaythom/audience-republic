@@ -1,5 +1,5 @@
 <template>
-  <div :style="cssProps">
+  <div :style="cssVariables">
     <h3>
       {{ title }}
     </h3>
@@ -9,7 +9,7 @@
       type="range"
       min="-100"
       max="100"
-      @input="$emit('input', $event.target.value)"
+      :disabled="disabled"
     >
     <p>{{ instructions }}</p>
   </div>
@@ -19,6 +19,10 @@
 export default {
 	name: 'ARSlider',
 	props: {
+		disabled: {
+			type: Boolean,
+			default: true,
+		},
 		colour: {
 			type: String,
 			required: true,
@@ -38,18 +42,23 @@ export default {
 		};
 	},
 	computed: {
-		cssProps() {
+		cssVariables() {
 			return {
 				'--colour': this.colour,
 				'--colour-lighter': this.colourLighter,
-				'--offset': this.calculatePercentage,
+				'--offset': `${this.calculatePercentage}%`,
 			};
 		},
 		colourLighter() {
 			return `${this.colour}40`;
 		},
 		calculatePercentage() {
-			return `${Math.floor(((this.rangeValue - -100) * 100) / (100 - -100))}%`;
+			return `${Math.floor(((this.rangeValue - -100) * 100) / (100 - -100))}`;
+		},
+	},
+	watch: {
+		rangeValue() {
+			this.$emit('input', this.rangeValue);
 		},
 	},
 };
@@ -92,12 +101,19 @@ input[type=range] {
 input[type=range]:focus {
   outline: none;
 }
+input[type=range]:disabled {
+  background: none;
+}
 input[type=range]::-webkit-slider-runnable-track {
   background-image: linear-gradient(to right, var(--colour) var(--offset), var(--colour-lighter) var(--offset) 100%);
   border-radius: 10px;
   cursor: pointer;
   height: 5px;
   width: 100%;
+}
+input[type=range]:disabled::-webkit-slider-runnable-track {
+  background-image: linear-gradient(to right, #DCDEE4 50%, #F6F8FA 50% 100%);
+  cursor: not-allowed;
 }
 input[type=range]::-webkit-slider-thumb {
   background-color: var(--colour);
@@ -109,15 +125,24 @@ input[type=range]::-webkit-slider-thumb {
   width: 21px;
   -webkit-appearance: none;
 }
+input[type=range]:disabled::-webkit-slider-thumb {
+  background-color: #DCDEE4;
+  cursor: not-allowed;
+}
 input[type=range]:focus::-webkit-slider-runnable-track {
   background-image: linear-gradient(to right, var(--colour) var(--offset), var(--colour-lighter) var(--offset) 100%);
 }
+
 input[type=range]::-moz-range-track {
   background-image: linear-gradient(to right, var(--colour) var(--offset), var(--colour-lighter) var(--offset) 100%);
   border-radius: 10px;
   cursor: pointer;
   height: 5px;
   width: 100%;
+}
+input[type=range]:disabled::-moz-range-track {
+  background-image: linear-gradient(to right, #DCDEE4 50%, #F6F8FA 50% 100%);
+  cursor: not-allowed;
 }
 input[type=range]::-moz-range-thumb {
   background-color: var(--colour);
@@ -126,5 +151,9 @@ input[type=range]::-moz-range-thumb {
   cursor: pointer;
   height: 15px;
   width: 15px;
+}
+input[type=range]:disabled::-moz-range-thumb {
+  background-color: #DCDEE4;
+  cursor: not-allowed;
 }
 </style>

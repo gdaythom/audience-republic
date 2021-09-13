@@ -18,19 +18,27 @@
         >
       </template>
     </ARHeader>
-    <div class="controls">
+    <div class="content">
       <ARSlider
         colour="#25A95B"
         title="Brightness"
         instructions="Slide to adjust image brightness!☀️"
+        :disabled="!uploadAvailable"
         style="margin-bottom:7px;"
-        @input="changeRange($event)"
+        @input="changeRange($event, 'brightness')"
       />
       <ARSlider
         colour="#4A90E2"
         title="Contrast"
         instructions="Slide to adjust image contrast! 🌓"
-        @input="changeRange($event)"
+        :disabled="!uploadAvailable"
+        style="margin-bottom:30px;"
+        @input="changeRange($event, 'contrast')"
+      />
+      <ARUpload
+        :brightness="brightness"
+        :contrast="contrast"
+        @uploaded="changeUpload($event)"
       />
     </div>
   </div>
@@ -39,16 +47,30 @@
 <script>
 import ARHeader from '../components/ARHeader.vue';
 import ARSlider from '../components/ARSlider.vue';
+import ARUpload from '../components/ARUpload.vue';
 
 export default {
 	name: 'Editor',
 	components: {
 		ARHeader,
 		ARSlider,
+		ARUpload,
+	},
+	data() {
+		return {
+			uploadAvailable: false,
+			brightness: 0,
+			contrast: 0,
+		};
 	},
 	methods: {
-		changeRange($event) {
-			console.log($event);
+		changeUpload($event) {
+			this.brightness = 0;
+			this.contrast = 0;
+			this.uploadAvailable = $event;
+		},
+		changeRange($event, property) {
+			this[property] = parseInt($event, 10);
 		},
 	},
 };
@@ -80,7 +102,8 @@ h2 {
   margin: 0;
   padding: 0;
 }
-.controls {
+.content {
+  margin-bottom: 30px;
   padding: 17px 20px;
 }
 </style>
