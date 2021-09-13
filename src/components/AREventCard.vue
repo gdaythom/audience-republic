@@ -107,10 +107,12 @@ export default {
       line-height: 40px;
       padding: 0 20px;
       text-decoration: none;
+      transition: all .2s ease;
     }
     a:hover {
       background-color: #F2EDFF;
       color: #7344C0;
+      transition: all .2s ease;
     }
   }
   button + nav:active,
