@@ -69,7 +69,7 @@ div {
   background-color: #ffffff;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  padding: 6px 20px;
+  padding: 8px 20px 0px 20px;
 }
 h3 {
   color: var(--colour);
@@ -78,13 +78,13 @@ h3 {
   line-height: 25px;
   font-weight: normal;
   margin: 0;
-  margin-bottom: 7px;
+  margin-bottom: 4px;
   padding: 0;
   text-align: center;
 }
 p {
-font-family: 'GraphikRegular';
   color: #42506B;
+  font-family: 'GraphikRegular';
   font-size: 13px;
   line-height: 25px;
   margin: 0;

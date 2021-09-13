@@ -25,7 +25,7 @@ header {
 .title {
   background-color: #7344C0;
   text-align: center;
-  padding: 15px 0;
+  padding: 14px 0;
 }
 .afeature {
   height: 195px;
@@ -35,7 +35,9 @@ header {
   }
 }
 .avatar {
+  border: 2px solid #ffffff;
   border-radius: 100%;
+  box-sizing: border-box;
   height: 60px;
   overflow: hidden;
   position: absolute;

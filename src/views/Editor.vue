@@ -89,7 +89,7 @@ h1 {
   font-family: 'GraphikMedium';
   font-size: 15px;
   font-weight: normal;
-  line-height: 25px;
+  line-height: 22px;
   margin: 0;
   padding: 0;
 }
