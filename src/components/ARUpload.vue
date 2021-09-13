@@ -133,7 +133,13 @@ export default {
 }
 .dropzone {
   border-bottom: 1px solid #DCDEE4;
+  box-sizing: border-box;
   height: 212px;
+  overflow: hidden;
+  canvas {
+    height: 100%;
+    width: auto;
+  }
 }
 .details {
   display: flex;
