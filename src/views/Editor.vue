@@ -18,16 +18,38 @@
         >
       </template>
     </ARHeader>
+    <div class="controls">
+      <ARSlider
+        colour="#25A95B"
+        title="Brightness"
+        instructions="Slide to adjust image brightness!☀️"
+        style="margin-bottom:7px;"
+        @input="changeRange($event)"
+      />
+      <ARSlider
+        colour="#4A90E2"
+        title="Contrast"
+        instructions="Slide to adjust image contrast! 🌓"
+        @input="changeRange($event)"
+      />
+    </div>
   </div>
 </template>
 
 <script>
 import ARHeader from '../components/ARHeader.vue';
+import ARSlider from '../components/ARSlider.vue';
 
 export default {
 	name: 'Editor',
 	components: {
 		ARHeader,
+		ARSlider,
+	},
+	methods: {
+		changeRange($event) {
+			console.log($event);
+		},
 	},
 };
 </script>
@@ -35,7 +57,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/_variables.scss';
 .wrapper {
-  background-color: red;
+  background-color: #ffffff;
   margin: 0 auto;
   max-width: 375px;
   width: 100%;
@@ -57,5 +79,8 @@ h2 {
   line-height: 20px;
   margin: 0;
   padding: 0;
+}
+.controls {
+  padding: 17px 20px;
 }
 </style>
