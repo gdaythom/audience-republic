@@ -61,6 +61,11 @@ export default {
 			this.$emit('input', this.rangeValue);
 		},
 	},
+	methods: {
+		reset() {
+			this.rangeValue = 0;
+		},
+	},
 };
 </script>
 
