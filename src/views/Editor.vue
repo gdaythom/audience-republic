@@ -20,6 +20,7 @@
     </ARHeader>
     <div class="content">
       <ARSlider
+        ref="brightnessSlider"
         colour="#25A95B"
         title="Brightness"
         instructions="Slide to adjust image brightness!☀️"
@@ -28,6 +29,7 @@
         @input="changeRange($event, 'brightness')"
       />
       <ARSlider
+        ref="contrastSlider"
         colour="#4A90E2"
         title="Contrast"
         instructions="Slide to adjust image contrast! 🌓"
@@ -67,6 +69,8 @@ export default {
 		changeUpload($event) {
 			this.brightness = 0;
 			this.contrast = 0;
+			this.$refs.brightnessSlider.reset();
+			this.$refs.contrastSlider.reset();
 			this.uploadAvailable = $event;
 		},
 		changeRange($event, property) {
