@@ -9,7 +9,7 @@
       >
     </span>
     <input
-      type="search"
+      type="text"
       autocomplete="false"
       :placeholder="placeholder"
     >
@@ -58,6 +58,7 @@ input {
   color: #43516b;
   display: inline-block;
   font-size: 14px;
+  margin: 0;
   padding: 16px 10px;
   transition: all .2s ease;
   width: 100%;
