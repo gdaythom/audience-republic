@@ -64,7 +64,6 @@ export default {
 				this.file = $event.target.files[0];
 				this.addImage();
 			} else {
-				console.error('File upload failed.');
 				this.$emit('uploaded', false);
 			}
 		},
