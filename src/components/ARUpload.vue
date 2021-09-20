@@ -1,7 +1,11 @@
 <template>
   <div class="wrapper">
     <div class="dropzone">
-      <canvas ref="editorCanvas" />
+      <canvas
+        ref="editorCanvas"
+        width="335"
+        height="212"
+      />
     </div>
     <div class="details">
       <div class="details__file">
@@ -76,14 +80,24 @@ export default {
 				image.onload = () => {
 					const canvas = this.$refs.editorCanvas;
 					const context = canvas.getContext('2d');
-					this.width = image.width;
-					this.height = image.height;
-					context.drawImage(image, 0, 0);
 
-					const imageData = context.getImageData(0, 0, this.width, this.height);
+					const hRatio = canvas.width / image.width;
+					const vRatio = canvas.height / image.height;
+					const ratio = Math.min(hRatio, vRatio);
+
+					this.width = image.width * ratio;
+					this.height = image.height * ratio;
+
+					this.centreX = (canvas.width - this.width) / 2;
+					this.centreY = (canvas.height - this.height) / 2;
+
+					context.clearRect(0, 0, canvas.width, canvas.height);
+					context.drawImage(image, 0, 0, image.width, image.height, this.centreX, this.centreY, this.width, this.height);
+
+					const imageData = context.getImageData(this.centreX, this.centreY, this.width, this.height);
 					this.originalImageData = imageData;
 
-					context.putImageData(imageData, 0, 0);
+					context.putImageData(imageData, this.centreX, this.centreY);
 					this.canvasContext = context;
 
 					this.$emit('uploaded', true);
@@ -91,12 +105,12 @@ export default {
 			};
 		},
 		updateCanvas() {
-			const canvasImageData = this.canvasContext.getImageData(0, 0, this.width, this.height);
+			const canvasImageData = this.canvasContext.getImageData(this.centreX, this.centreY, this.width, this.height);
 
 			this.alterBrightness(canvasImageData.data);
 			this.alterContrast(canvasImageData.data);
 
-			this.canvasContext.putImageData(canvasImageData, 0, 0);
+			this.canvasContext.putImageData(canvasImageData, this.centreX, this.centreY);
 		},
 		alterBrightness(data) {
 			const originalImageDataArray = this.originalImageData.data;
