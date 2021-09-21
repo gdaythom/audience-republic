@@ -30,8 +30,12 @@ header {
 .afeature {
   height: 195px;
   overflow: hidden;
+  position: relative;
   img {
-    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 .avatar {
